@@ -1,0 +1,10 @@
+Copyright © 2024 Grupo Cumbre. Todos los derechos reservados.
+
+Este software ha sido desarrollado por santiago avilez para Grupo Cumbre.
+El código fuente y los archivos asociados están protegidos por derechos de autor
+y no pueden ser reutilizados, redistribuidos o modificados sin el permiso expreso del propietario.
+
+Para más información, contacte a: rrhh@amcumbre.com, santiago.avilez@est.fi.uncoma.edu.ar
+
+Este software está sujeto a los términos del contrato firmado entre santiago avilez
+y Grupo Cumbre.
