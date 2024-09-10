@@ -1,0 +1,87 @@
+.alerta-news-wrapper {
+    width: 100%;
+}
+
+.alerta-news-item {
+    box-sizing: border-box;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    text-align: left;
+}
+
+
+.alerta-news-item img {
+    width: 100%;
+    /* Hacemos que el ancho ocupe el 100% del contenedor */
+    height: 200px !important;
+    /* Establecemos una altura fija */
+    object-fit: cover;
+    /* Recorta la imagen si es necesario para llenar el espacio */
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.alerta-news-item h4 {
+    font-size: 18px;
+}
+
+.alerta-news-item p {
+    font-size: 14px;
+    color: #888;
+}
+
+.swiper-container {
+    width: 100%;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+/* Swipers para móviles */
+.mobile-swiper-1,
+.mobile-swiper-2 {
+    display: none;
+
+}
+
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: #000;
+    /* Cambia el color de las flechas */
+    width: 44px;
+    /* Aumenta el tamaño para mayor visibilidad */
+    height: 44px;
+    z-index: 10;
+    /* Asegura que las flechas estén por encima de otros elementos */
+    opacity: 1;
+    /* Asegúrate de que no sean transparentes */
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    font-size: 24px;
+    /* Tamaño de los íconos de flechas */
+}
+
+.swiper-button-next {
+    right: 10px;
+    /* Ajusta la posición del botón derecho */
+}
+
+.swiper-button-prev {
+    left: 10px;
+    /* Ajusta la posición del botón izquierdo */
+}
+
+@media (max-width: 768px) {
+    .desktop-swiper {
+        display: none;
+    }
+
+    .mobile-swiper-1,
+    .mobile-swiper-2 {
+        display: block;
+        position: relative;
+    }
+}

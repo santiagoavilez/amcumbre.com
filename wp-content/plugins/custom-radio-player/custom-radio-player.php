@@ -5,6 +5,7 @@ Description: Plugin para añadir un reproductor de radio y gestionar la programa
 Version: 1.0
 Author: Santiago Avilez
 Author URI: https://santiagoavilez.com
+Plugin URI: https://github.com/santiagoavilez/amcumbre.com
 */
 
 // Asegúrate de que WordPress cargue el plugin correctamente.
