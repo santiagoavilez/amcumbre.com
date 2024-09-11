@@ -47,7 +47,7 @@
 
 .swiper-button-next,
 .swiper-button-prev {
-    color: #000;
+    color: #000 !important;
     /* Cambia el color de las flechas */
     width: 44px;
     /* Aumenta el tamaño para mayor visibilidad */

@@ -17,88 +17,25 @@ function alerta_news_enqueue_scripts()
 {
     if (is_front_page()) {
         // Swiper CSS
-        wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css', [], '8.0', 'all');
+        wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', [], '11.0', 'all');
 
-        // Swiper JS
-        wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js', [], '8.0', true);
-
+        // Swiper JS como módulo
+        wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', [], '11.0', true);
+        
         // Archivo JS personalizado para inicializar Swiper
         wp_enqueue_script('alerta-news-swiper-init', plugin_dir_url(__FILE__) . 'js/alerta-news-swiper.js', ['swiper-js'], '1.0', true);
 
         // Archivo CSS personalizado para el layout
         wp_enqueue_style('alerta-news-css', plugin_dir_url(__FILE__) . 'css/alerta-news-styles.css');
+        
     }
 }
 add_action('wp_enqueue_scripts', 'alerta_news_enqueue_scripts');
 
-// Función para crear el shortcode que muestra las noticias
-// function fetch_alertadigital_news()
-// {
-//     $rss = fetch_feed('http://alertadigital.ar/feed/');
-
-//     if (!is_wp_error($rss)) {
-//         $max_items = $rss->get_item_quantity(8);
-//         $rss_items = $rss->get_items(0, $max_items);
-
-//         if ($max_items > 0) {
-//             // $output = '<div class="alerta-news-wrapper">';
-//             // $output .= '<div class="alerta-news flexbox">';
-
-//             // foreach ($rss_items as $item) {
-//             //     $title = esc_html($item->get_title());
-//             //     $thumbnail = esc_url($item->get_enclosure()->link);
-//             //     $link = esc_url($item->get_permalink());
-//             //     $date = esc_html($item->get_date('j F Y'));
-
-//             //     $output .= '<div class="alerta-news-item">';
-//             //     $output .= '<a  href="' . $link . '" target="_blank"> <img width="100%" heigth="180" src=' .$thumbnail.' /> </a>';
-//             //     $output .= '<h4><a href="' . $link . '" target="_blank">' . $title . '</a></h4>';
-//             //     $output .= '<p>' . $date . '</p>';
-//             //     $output .= '</div>';
-//             // }
-
-//             // $output .= '</div>';
-
-//             // Swiper (para móviles)
-//             $output = '<div class="swiper-container">';
-//             $output .= '<div class="swiper-wrapper">';
-
-//             foreach ($rss_items as $item) {
-//                 $title = esc_html($item->get_title());
-//                 $link = esc_url($item->get_permalink());
-//                 $thumbnail = esc_url($item->get_enclosure()->link);
-
-//                 $date = esc_html($item->get_date('j F Y'));
-
-//                 $output .= '<div class="swiper-slide">';
-//                 $output .= '<div class="alerta-news-item">';
-//                 $output .= '<a  href="' . $link . '" target="_blank"> <img  src=' . $thumbnail . ' /> </a>';
-
-//                 $output .= '<h4><a href="' . $link . '" target="_blank">' . $title . '</a></h4>';
-//                 $output .= '<p>' . $date . '</p>';
-//                 $output .= '</div>';
-//                 $output .= '</div>';
-//             }
-
-//             $output .= '</div>';
-//             $output .= '</div>'; // Cerrar swiper-container
-//             $output .= '</div>'; // Cerrar wrapper
-//         } else {
-//             $output = '<p>No hay noticias disponibles en este momento.</p>';
-//         }
-//     } else {
-//         $output = '<p>Hubo un problema al recuperar las noticias.</p>';
-//     }
-
-//     return $output;
-// }
-// add_shortcode('alerta_news', 'fetch_alertadigital_news');
-
-
 
 function fetch_alertadigital_news()
 {
-    $rss = fetch_feed('http://alertadigital.ar/feed/');
+    $rss = fetch_feed('https://alertadigital.ar/feed/');
 
     if (!is_wp_error($rss)) {
         $max_items = $rss->get_item_quantity(8);  // Obtenemos las primeras 8 noticias
@@ -106,7 +43,6 @@ function fetch_alertadigital_news()
 
         if ($max_items > 0) {
             $output = '<div class="alerta-news-wrapper">';
-
             // Swiper para computadoras (muestra 4 noticias simultáneamente)
             $output .= '<div class="swiper-container desktop-swiper">';
             $output .= '<div class="swiper-wrapper">';
@@ -127,8 +63,10 @@ function fetch_alertadigital_news()
             }
 
             // Botones de navegación
-            $output .= '<div class="swiper-button-next"></div>';
-            $output .= '<div class="swiper-button-prev"></div>';
+            $output .= '<div class="swiper-pagination"></div>';
+
+            $output .= '<div class="swiper-button-next-pc"></div>';
+            $output .= '<div class="swiper-button-prev-pc"></div>';
 
             $output .= '</div>';
             $output .= '</div>'; // Fin del contenedor Swiper para computadoras
@@ -154,8 +92,8 @@ function fetch_alertadigital_news()
             }
 
             // Botones de navegación
-            $output .= '<div class="swiper-button-next"></div>';
-            $output .= '<div class="swiper-button-prev"></div>';
+            $output .= '<div class="swiper-button-next-1"></div>';
+            $output .= '<div class="swiper-button-prev-1"></div>';
 
             $output .= '</div>';
             $output .= '</div>'; // Fin del primer Swiper para móviles
@@ -181,8 +119,8 @@ function fetch_alertadigital_news()
             }
 
             // Botones de navegación
-            $output .= '<div class="swiper-button-next"></div>';
-            $output .= '<div class="swiper-button-prev"></div>';
+            $output .= '<div class="swiper-button-next-2"></div>';
+            $output .= '<div class="swiper-button-prev-2"></div>';
 
             $output .= '</div>';
             $output .= '</div>'; // Fin del segundo Swiper para móviles
