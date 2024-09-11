@@ -110,21 +110,6 @@ $follows_count = "195";
 				</div>
 				<span>Seguidos</span>
 			</div>
-
-			<!-- <div class="sbi_feedtheme_header_text">
-				<h3
-				<?php // echo $header_text_color_style . $header_heading_attribute;
-				?>
-				><?php // echo esc_html($username);
-					?></h3>
-					<?php //if ($should_show_bio) :
-					?>
-						<p class="sbi_bio" <?php // echo $header_text_color_style . $bio_attribute;
-											?>><?php // echo str_replace('&lt;br /&gt;', '<br>', esc_html(nl2br($bio)));
-												?></p>
-					<?php // endif;
-					?>
-			</div> -->
 </div>
 </a>
 </div>
