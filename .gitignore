@@ -41,12 +41,9 @@ wp-config.php
 # uncomment the next line
 #wp-content/plugins
 wp-content/mu-plugins
-wp-content/plugins/elementor
-wp-content/plugins/essential-addons-for-elementor-lite
-wp-content/plugins/foxiz-core
-wp-content/plugins/wp-super-cache
-wp-content/plugins/wp-rocket
-wp-content/plugins/pro-elements
+wp-content/plugins/*
+!wp-content/plugins/alerta-news/
+!wp-content/plugins/custom-radio-player/
 wp-content/wp-rocket-config
 wp-content/cache
 wp-content/*.php

@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Custom Radio Player
-Description: Plugin para añadir un reproductor de radio y gestionar la programación.
+Description: Plugin para añadir un reproductor de radio y gestionar la programación de radio cumbre.
 Version: 1.0
 Author: Santiago Avilez
 Author URI: https://santiagoavilez.com
