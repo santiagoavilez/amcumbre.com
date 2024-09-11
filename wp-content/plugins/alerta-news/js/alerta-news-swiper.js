@@ -1,26 +1,21 @@
 document.addEventListener('DOMContentLoaded', function () {
   console.log("swiper.js cargado");
-  
+
   if (window.innerWidth > 768) {
     // Swiper para computadoras (8 noticias, mostrando 4 a la vez)
     const desktopSwiper = new Swiper(".desktop-swiper", {
       slidesPerView: 4,
-      spaceBetween: 10,
+      spaceBetween: 8,
       loop: true,
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
+
       navigation: {
-        nextEl: ".swiper-button-next-pc",
-        prevEl: ".swiper-button-prev-pc",
+        nextEl: "#swiper-button-next",
+        prevEl: "#swiper-button-prev",
       },
       autoplay: {
         delay: 2000,
       },
     });
-    desktopSwiper.slideNext();
-    console.log("Desktop slider", desktopSwiper);
 
   } else {
     // Primer Swiper en móviles (primer grupo de 4 noticias)
@@ -33,8 +28,8 @@ document.addEventListener('DOMContentLoaded', function () {
         clickable: true,
       },
       navigation: {
-        nextEl: ".swiper-button-next-1",
-        prevEl: ".swiper-button-prev-1",
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
       },
       autoplay: {
         delay: 2000,
@@ -50,8 +45,8 @@ document.addEventListener('DOMContentLoaded', function () {
         clickable: true,
       },
       navigation: {
-        nextEl: ".swiper-button-next-2",
-        prevEl: ".swiper-button-prev-2",
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
       },
       autoplay: {
         delay: 2000,

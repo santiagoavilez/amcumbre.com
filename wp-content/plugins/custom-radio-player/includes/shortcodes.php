@@ -40,29 +40,15 @@ function radio_player_shortcode($atts)
     } else {
         // Mostrar mensaje si no hay programación actual
         $titulo = "Escuchando CUMBRE";
-        $imagen = "http://dev.amcumbre.com/wp-content/uploads/2024/09/CUMBRE-1-1.png";
+        $imagen = "http://dev.amcumbre.com/wp-content/uploads/2024/09/cumre-logo-aguila.png";
         $locutores = "";
     }
 
+    $unique_id = "audio-cumbre";
 
     ob_start();
 ?>
-    <!-- <div class="radio-player">
-        <audio id="myAudio"></audio>
-        <button class="button-audio" onclick='togglePlayPause("myAudio", "https://cdn.instream.audio/:9366/stream")'>
-            <span id="playIconCumbre" class="icon-player active "><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play">
-                    <polygon points="6 3 20 12 6 21 6 3" />
-                </svg></span>
-            <span id="pauseIconCumbre" class="icon-player"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pause">
-                    <rect x="14" y="4" width="4" height="16" rx="1" />
-                    <rect x="6" y="4" width="4" height="16" rx="1" />
-                </svg></span>
-        </button>
-        <span class="audio-label">CUMBRE EN VIVO</span>
 
-    </div>
-     -->
-    <audio id="myAudio"></audio>
     <div class="container-radio">
 
         <div class="radio-player">
@@ -70,7 +56,7 @@ function radio_player_shortcode($atts)
 
             <div class="radio-image">
                 <img width="320" height="320" src="<?php echo esc_url($imagen); ?>" alt="Imagen del programa">
-                <button class="button-audio-mobile" onclick='togglePlayPause("myAudio", "https://cdn.instream.audio/:9366/stream")'>
+                <button class="button-audio-mobile" onclick='togglePlayPause("https://cdn.instream.audio/:9366/stream")'>
                     <svg id="playIconCumbre" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play icon-player  active ">
                         <polygon points="6 3 20 12 6 21 6 3" />
                     </svg>
@@ -88,7 +74,7 @@ function radio_player_shortcode($atts)
 
                 <p><?php echo esc_html($locutores); ?></p>
             </div>
-            <button class="button-audio" onclick='togglePlayPause("myAudio", "https://cdn.instream.audio/:9366/stream")'>
+            <button class="button-audio" onclick='togglePlayPause("https://cdn.instream.audio/:9366/stream")'>
                 <svg id="playIconCumbre" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play icon-player active ">
                     <polygon points="6 3 20 12 6 21 6 3" />
                 </svg>
@@ -104,8 +90,14 @@ function radio_player_shortcode($atts)
         </div>
     </div>
     <script>
-        function togglePlayPause(audioId, streamUrl) {
-            const audioElement = document.getElementById(audioId);
+        let audioElement = null;
+
+        function togglePlayPause(streamUrl) {
+            if (audioElement === null | audioElement === undefined) {
+                audioElement = new Audio(streamUrl + "?nocache=" + new Date().getTime());
+            }
+            console.log(audioElement);
+
             const isPlaying = !audioElement.paused;
             const playIconId = 'playIconCumbre';
             const pauseIconId = 'pauseIconCumbre';
@@ -113,7 +105,6 @@ function radio_player_shortcode($atts)
             const pauseIcons = document.getElementsByClassName('lucide-pause');
             const playIcon = document.getElementById(playIconId);
             const pauseIcon = document.getElementById(pauseIconId);
-            console.log(playIcons);
 
             if (isPlaying) {
                 audioElement.pause();
@@ -143,6 +134,7 @@ function radio_player_shortcode($atts)
         .container-radio {
             padding: 1rem;
             position: relative;
+            height: auto;
         }
 
         .radio-player {

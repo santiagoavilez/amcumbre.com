@@ -17,17 +17,17 @@ function alerta_news_enqueue_scripts()
 {
     if (is_front_page()) {
         // Swiper CSS
-        wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', [], '11.0', 'all');
+        wp_enqueue_style('swiper', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', [], '11.0', 'all');
 
         // Swiper JS como módulo
         wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', [], '11.0', true);
-        
+
         // Archivo JS personalizado para inicializar Swiper
         wp_enqueue_script('alerta-news-swiper-init', plugin_dir_url(__FILE__) . 'js/alerta-news-swiper.js', ['swiper-js'], '1.0', true);
 
         // Archivo CSS personalizado para el layout
-        wp_enqueue_style('alerta-news-css', plugin_dir_url(__FILE__) . 'css/alerta-news-styles.css');
-        
+        wp_enqueue_style('alerta-news', plugin_dir_url(__FILE__) . 'css/alerta-news-styles.css');
+
     }
 }
 add_action('wp_enqueue_scripts', 'alerta_news_enqueue_scripts');
@@ -44,7 +44,10 @@ function fetch_alertadigital_news()
         if ($max_items > 0) {
             $output = '<div class="alerta-news-wrapper">';
             // Swiper para computadoras (muestra 4 noticias simultáneamente)
+            $output .= '<div class="swiper-button-next"></div>';
+            $output .= '<div  class="swiper-button-prev"></div>';
             $output .= '<div class="swiper-container desktop-swiper">';
+
             $output .= '<div class="swiper-wrapper">';
 
             foreach ($rss_items as $item) {
@@ -55,7 +58,7 @@ function fetch_alertadigital_news()
 
                 $output .= '<div class="swiper-slide">';
                 $output .= '<div class="alerta-news-item">';
-                $output .= '<img src="' . $image_url . '" alt="' . $title . '" />'; // Imagen
+                $output .= ' <a href="' . $link . '" target="_blank"> <img src="' . $image_url . '" alt="' . $title . '" /> </a>'; // Imagen
                 $output .= '<h4><a href="' . $link . '" target="_blank">' . $title . '</a></h4>';
                 $output .= '<p>' . $date . '</p>';
                 $output .= '</div>';
@@ -63,12 +66,13 @@ function fetch_alertadigital_news()
             }
 
             // Botones de navegación
-            $output .= '<div class="swiper-pagination"></div>';
 
-            $output .= '<div class="swiper-button-next-pc"></div>';
-            $output .= '<div class="swiper-button-prev-pc"></div>';
+
 
             $output .= '</div>';
+
+            $output .= '<div class="swiper-pagination"></div>';
+
             $output .= '</div>'; // Fin del contenedor Swiper para computadoras
 
             // Swiper para móviles (primer grupo de 4 noticias)
@@ -92,10 +96,11 @@ function fetch_alertadigital_news()
             }
 
             // Botones de navegación
-            $output .= '<div class="swiper-button-next-1"></div>';
-            $output .= '<div class="swiper-button-prev-1"></div>';
+
 
             $output .= '</div>';
+            $output .= '<div class="swiper-pagination"></div>';
+
             $output .= '</div>'; // Fin del primer Swiper para móviles
 
             // Swiper para móviles (segundo grupo de 4 noticias)
@@ -119,10 +124,10 @@ function fetch_alertadigital_news()
             }
 
             // Botones de navegación
-            $output .= '<div class="swiper-button-next-2"></div>';
-            $output .= '<div class="swiper-button-prev-2"></div>';
+
 
             $output .= '</div>';
+            $output .= '<div class="swiper-pagination"></div>';
             $output .= '</div>'; // Fin del segundo Swiper para móviles
 
             $output .= '</div>'; // Fin del wrapper principal

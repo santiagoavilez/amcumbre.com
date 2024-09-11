@@ -3,22 +3,23 @@
 }
 
 .alerta-news-item {
-    box-sizing: border-box;
     padding: 10px;
-    margin-bottom: 20px;
-    border-radius: 5px;
     text-align: left;
+    width: 100%;
+
 }
 
+.swiper-pagination {
+    bottom: 0;
+}
 
 .alerta-news-item img {
-    width: 100%;
     /* Hacemos que el ancho ocupe el 100% del contenedor */
     height: 200px !important;
     /* Establecemos una altura fija */
     object-fit: cover;
     /* Recorta la imagen si es necesario para llenar el espacio */
-    border-radius: 5px;
+    border-radius: 5px !important;
     margin-bottom: 10px;
 }
 
@@ -33,7 +34,7 @@
 
 .swiper-container {
     width: 100%;
-    margin-bottom: 30px;
+    padding-bottom: 2rem !important;
     position: relative;
 }
 
@@ -49,29 +50,23 @@
 .swiper-button-prev {
     color: #000 !important;
     /* Cambia el color de las flechas */
-    width: 44px;
-    /* Aumenta el tamaño para mayor visibilidad */
-    height: 44px;
-    z-index: 10;
+
+    z-index: 999 !important;
     /* Asegura que las flechas estén por encima de otros elementos */
     opacity: 1;
     /* Asegúrate de que no sean transparentes */
 }
 
-.swiper-button-next::after,
-.swiper-button-prev::after {
-    font-size: 24px;
-    /* Tamaño de los íconos de flechas */
-}
 
+
+
+        /* Ajusta la posición del botón derecho */
 .swiper-button-next {
-    right: 10px;
-    /* Ajusta la posición del botón derecho */
+    right: -50px !important;
 }
-
+ /* Ajusta la posición del botón izquierdo */
 .swiper-button-prev {
-    left: 10px;
-    /* Ajusta la posición del botón izquierdo */
+    left: -50px !important;
 }
 
 @media (max-width: 768px) {
@@ -84,4 +79,18 @@
         display: block;
         position: relative;
     }
+
+        .swiper-button-next {
+            display: none !important;
+        }
+
+        /* Ajusta la posición del botón izquierdo */
+        .swiper-button-prev {
+            display: none !important;
+        }
+   .swiper-button-next::after,
+   .swiper-button-prev::after {
+       display: none !important;
+       /* Asegúrate de que no sean transparentes */
+   }
 }
