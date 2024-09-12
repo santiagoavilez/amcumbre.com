@@ -70,6 +70,7 @@ $follows_count = "195";
 		.sbi_header_img {
 			width: 72px !important;
 			height: 72px !important;
+			overflow: visible !important;
 		}
 
 		@media screen and (max-width: 768px) {
