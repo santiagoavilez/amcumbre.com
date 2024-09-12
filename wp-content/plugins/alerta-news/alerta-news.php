@@ -17,7 +17,7 @@ function alerta_news_enqueue_scripts()
 {
     if (is_front_page()) {
         // Swiper CSS
-        wp_enqueue_style('swiper', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', [], '11.0', 'all');
+        wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', [], '11.0', 'all');
 
         // Swiper JS como módulo
         wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', [], '11.0', true);
