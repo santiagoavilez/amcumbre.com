@@ -40,7 +40,7 @@ function radio_player_shortcode($atts)
     } else {
         // Mostrar mensaje si no hay programación actual
         $titulo = "Escuchando CUMBRE";
-        $imagen = "http://dev.amcumbre.com/wp-content/uploads/2024/09/cumre-logo-aguila.png";
+        $imagen = "https://amcumbre.com/wp-content/uploads/2024/09/cumre-logo-aguila.png";
         $locutores = "";
     }
 
