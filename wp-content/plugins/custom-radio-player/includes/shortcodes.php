@@ -6,7 +6,23 @@ function radio_player_shortcode($atts)
 {
 
     $hora_actual = current_time('H:i');
+    $dia_actual = strtolower(current_time('l')); // Obtiene el día actual en formato texto y lo convierte a minúsculas
 
+    // Traducción del nombre del día al español (opcional, si es necesario)
+    $dias_ingles_a_espanol = array(
+        'monday' => 'lunes',
+        'tuesday' => 'martes',
+        'wednesday' => 'miercoles',
+        'thursday' => 'jueves',
+        'friday' => 'viernes',
+        'saturday' => 'sabado',
+        'sunday' => 'domingo'
+    );
+
+    // Si el día está en inglés, lo traducimos a español
+    if (array_key_exists($dia_actual, $dias_ingles_a_espanol)) {
+        $dia_actual = $dias_ingles_a_espanol[$dia_actual];
+    }
     // Argumentos para la consulta
     $args = array(
         'post_type' => 'programacion',
@@ -23,6 +39,11 @@ function radio_player_shortcode($atts)
                 'value' => $hora_actual,
                 'compare' => '>=',
                 'type' => 'TIME'
+            ),
+            array(
+                'key' => 'dias_semana', // Buscar en los días seleccionados
+                'value' => $dia_actual, // Comparar con el día actual
+                'compare' => 'LIKE' // Usamos LIKE porque 'dias_semana' es un array serializado
             )
         )
     );
@@ -43,8 +64,6 @@ function radio_player_shortcode($atts)
         $imagen = "https://amcumbre.com/wp-content/uploads/2024/09/cumre-logo-aguila.png";
         $locutores = "";
     }
-
-    $unique_id = "audio-cumbre";
 
     ob_start();
 ?>

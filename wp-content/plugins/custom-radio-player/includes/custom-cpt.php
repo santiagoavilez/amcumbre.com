@@ -62,6 +62,10 @@ function mostrar_metaboxes_programacion($post)
     $hora_inicio = get_post_meta($post->ID, 'hora_inicio', true);
     $hora_fin = get_post_meta($post->ID, 'hora_fin', true);
     $locutores = get_post_meta($post->ID, 'locutores', true);
+    $dias_semana = get_post_meta($post->ID,
+        'dias_semana',
+        true
+    ); // Recoger los días
 
     // Campos del formulario
 ?>
@@ -73,6 +77,16 @@ function mostrar_metaboxes_programacion($post)
 
     <label for="locutores">Locutores (separados por comas):</label>
     <input type="text" name="locutores" id="locutores" value="<?php echo esc_attr($locutores); ?>" />
+
+    <p>Días de transmisión:</p>
+    <label><input type="checkbox" name="dias_semana[]" value="lunes" <?php if (is_array($dias_semana) && in_array('lunes', $dias_semana)) echo 'checked'; ?>> Lunes</label><br>
+    <label><input type="checkbox" name="dias_semana[]" value="martes" <?php if (is_array($dias_semana) && in_array('martes', $dias_semana)) echo 'checked'; ?>> Martes</label><br>
+    <label><input type="checkbox" name="dias_semana[]" value="miercoles" <?php if (is_array($dias_semana) && in_array('miercoles', $dias_semana)) echo 'checked'; ?>> Miércoles</label><br>
+    <label><input type="checkbox" name="dias_semana[]" value="jueves" <?php if (is_array($dias_semana) && in_array('jueves', $dias_semana)) echo 'checked'; ?>> Jueves</label><br>
+    <label><input type="checkbox" name="dias_semana[]" value="viernes" <?php if (is_array($dias_semana) && in_array('viernes', $dias_semana)) echo 'checked'; ?>> Viernes</label><br>
+    <label><input type="checkbox" name="dias_semana[]" value="sabado" <?php if (is_array($dias_semana) && in_array('sabado', $dias_semana)) echo 'checked'; ?>> Sábado</label><br>
+    <label><input type="checkbox" name="dias_semana[]" value="domingo" <?php if (is_array($dias_semana) && in_array('domingo', $dias_semana)) echo 'checked'; ?>> Domingo</label><br>
+
 <?php
 }
 
@@ -87,6 +101,13 @@ function guardar_detalles_programacion($post_id)
     }
     if (array_key_exists('locutores', $_POST)) {
         update_post_meta($post_id, 'locutores', $_POST['locutores']);
+    }
+
+    // Guardar días de la semana
+    if (isset($_POST['dias_semana'])) {
+        update_post_meta($post_id, 'dias_semana', array_map('sanitize_text_field', $_POST['dias_semana']));
+    } else {
+        delete_post_meta($post_id, 'dias_semana'); // Eliminar si no está seleccionado
     }
 }
 

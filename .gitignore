@@ -47,7 +47,20 @@ wp-content/plugins/*
 wp-content/wp-rocket-config
 wp-content/cache
 wp-content/*.php
-
+robots.txt
+dev/
+dev
+dev_backup/
+.user.ini
+.htaccess.*
+dev*
+.htaccess.BKP20240116204508
+*.htaccess
+desarollo
+desarollo/
+dev.tar.gz
+img
+css
 # All themes
 #
 # Note: If you wish to whitelist themes,
