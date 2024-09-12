@@ -67,6 +67,28 @@ $follows_count = "195";
 			margin-bottom: -12px;
 		}
 
+		.sbi_header_img {
+			width: 72px !important;
+			height: 72px !important;
+		}
+
+		@media screen and (max-width: 768px) {
+
+			.instagram-column {
+				font-size: 0.875rem;
+			}
+
+			.instagram-stat {
+				font-size: 1rem;
+			}
+
+			.sbi_header_text {
+				flex-wrap: wrap;
+			}
+
+		}
+
+
 		#sb_instagram .sb_instagram_header .sbi_header_text,
 		.sb_instagram_header .sbi_header_text {
 
@@ -78,7 +100,7 @@ $follows_count = "195";
 			<div class="sbi_header_img" <?php echo $header_image_atts; ?>>
 				<?php if ($avatar !== '' || $doing_cutomizer):  ?>
 					<div class="sbi_header_img_hover" <?php echo $avatar_hover_data_attributes ?>><?php echo SB_Instagram_Display_Elements::get_icon('newlogo', 'svg'); ?></div>
-					<img<?php echo $avatar_el_atts; ?> width="50" height="50">
+					<img<?php echo $avatar_el_atts; ?> width="72" height="72">
 					<?php endif; ?>
 					<?php if (empty($avatar) || $doing_cutomizer): ?>
 						<div class="sbi_header_hashtag_icon" <?php echo $avatar_svg_data_attributes ?>><?php echo SB_Instagram_Display_Elements::get_icon('newlogo', 'svg'); ?></div>
