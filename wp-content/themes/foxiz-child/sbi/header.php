@@ -68,9 +68,14 @@ $follows_count = "195";
 		}
 
 		.sbi_header_img {
-			width: 72px !important;
-			height: 72px !important;
+			width: 80px !important;
+			height: 80px !important;
+
 			overflow: visible !important;
+		}
+
+		.sbi_header_img_hover {
+			border-radius: 999px !important;
 		}
 
 		@media screen and (max-width: 768px) {
