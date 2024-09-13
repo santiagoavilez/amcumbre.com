@@ -17,10 +17,10 @@ function alerta_news_enqueue_scripts()
 {
     if (is_front_page()) {
         // Swiper CSS
-        wp_enqueue_style('swiper', 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css', [], '10.0', 'all');
+        wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', [], '11.0', 'all');
 
         // Swiper JS como módulo
-        wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js', [], '10.0', true);
+        wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', [], '11.0', true);
 
         // Archivo JS personalizado para inicializar Swiper
         wp_enqueue_script('alerta-news-swiper-init', plugin_dir_url(__FILE__) . 'js/alerta-news-swiper.js', ['swiper-js'], '1.0', true);
@@ -35,7 +35,7 @@ add_action('wp_enqueue_scripts', 'alerta_news_enqueue_scripts');
 
 function fetch_alertadigital_news()
 {
-    $rss = fetch_feed('https://alertadigital.ar/feed/');
+    $rss = fetch_feed('http://alertadigital.ar/feed/');
 
     if (!is_wp_error($rss)) {
         $max_items = $rss->get_item_quantity(8);  // Obtenemos las primeras 8 noticias
@@ -70,8 +70,6 @@ function fetch_alertadigital_news()
 
 
             $output .= '</div>';
-
-            $output .= '<div class="swiper-pagination"></div>';
 
             $output .= '</div>'; // Fin del contenedor Swiper para computadoras
 

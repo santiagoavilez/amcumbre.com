@@ -79,18 +79,12 @@
         display: block;
         position: relative;
     }
-
-        .swiper-button-next {
-            display: none !important;
-        }
-
-        /* Ajusta la posición del botón izquierdo */
-        .swiper-button-prev {
-            display: none !important;
-        }
-   .swiper-button-next::after,
-   .swiper-button-prev::after {
-       display: none !important;
-       /* Asegúrate de que no sean transparentes */
-   }
+    .alerta-news-item img {
+        width: 100% !important;
+        height: auto !important;
+        aspect-ratio: 16/9 !important;
+    }
+    .swiper-button-next, .swiper-button-prev  {
+        display: none !important;
+    }
 }

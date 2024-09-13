@@ -1,32 +1,16 @@
 <?php
 // abrir todos los links en una nueva ventana
-function abrir_enlaces_en_nueva_ventana($content) {
-    $content = preg_replace_callback(
-        '/<a([^>]+)>/i',
-        function($matches) {
-            $texto = $matches[0];
-            // No añadir target="_blank" si ya está presente
-            if (strpos($texto, ' target=') === false) {
-                $texto = str_replace('<a', '<a target="_blank"', $texto);
-            }
-            return $texto;
-        },
-        $content
-    );
-    return $content;
-}
 
-add_filter('the_content', 'abrir_enlaces_en_nueva_ventana');
 // fin abrir todos los links en una nueva ventana
 
 function filter_article_title( $title ) {
-  // Reemplazar o eliminar palabra o frase del título 
+  // Reemplazar o eliminar palabra o frase del título
 
-  $title = str_replace( '» Alerta Digital', '', $title );	
+  $title = str_replace( '» Alerta Digital', '', $title );
   return $title;
 }
 add_filter( 'title_save_pre', 'filter_article_title' );
-// Reemplazar o eliminar palabra o frase del título 
+// Reemplazar o eliminar palabra o frase del título
 
 
 function custom_date_format() {
