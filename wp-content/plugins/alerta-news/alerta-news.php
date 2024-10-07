@@ -17,10 +17,10 @@ function alerta_news_enqueue_scripts()
 {
     if (is_front_page()) {
         // Swiper CSS
-        wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css', [], '8.0', 'all');
+        wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css', [], '10.0', 'all');
 
         // Swiper JS como módulo
-        wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js', [], '8.0', true);
+        wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js', [], '10.0', true);
 
         // Archivo JS personalizado para inicializar Swiper
         wp_enqueue_script('alerta-news-swiper-init', plugin_dir_url(__FILE__) . 'js/alerta-news-swiper.js', ['swiper-js'], '1.0', true);
