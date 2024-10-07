@@ -187,8 +187,8 @@ function radio_player_shortcode($atts)
             }
 
             .radio-image img {
-                width: 480px;
-                height: 480px;
+                width: 100%;
+                height: 100%;
                 object-fit: cover;
                 border-radius: 0.5rem;
 
@@ -236,8 +236,8 @@ function radio_player_shortcode($atts)
             }
 
             .radio-image img {
-                width: 100%;
-                height: 100%;
+                width: 480px;
+                height: 480px;
                 object-fit: cover;
                 border-radius: 0.5rem;
 
