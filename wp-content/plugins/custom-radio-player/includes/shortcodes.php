@@ -61,7 +61,7 @@ function radio_player_shortcode($atts)
     } else {
         // Mostrar mensaje si no hay programación actual
         $titulo = "Escuchando CUMBRE";
-        $imagen = "https://amcumbre.com/wp-content/uploads/2024/09/cumre-logo-aguila.png";
+        $imagen = "https://amcumbre.com/wp-content/uploads/2024/10/cumbre-logo-aguila.webp";
         $locutores = "";
     }
 
@@ -169,6 +169,8 @@ function radio_player_shortcode($atts)
             color: #fafafa;
             border-radius: 0.5rem;
             max-width: 960px;
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
         }
 
         @media screen and (min-width: 768px) {
