@@ -39,14 +39,28 @@ wp-config.php
 #
 # Note: If you wish to whitelist plugins,
 # uncomment the next line
-wp-content/plugins
-wp-content/plugins/wp-super-cache
-wp-content/plugins/wp-rocket
-wp-content/plugins/pro-elements
+#wp-content/plugins
+wp-content/mu-plugins
+wp-content/plugins/*
+!wp-content/plugins/alerta-news/
+!wp-content/plugins/custom-radio-player/
 wp-content/wp-rocket-config
 wp-content/cache
 wp-content/*.php
-
+robots.txt
+dev/
+dev
+dev_backup/
+.user.ini
+.htaccess.*
+dev*
+.htaccess.BKP20240116204508
+*.htaccess
+desarollo
+desarollo/
+dev.tar.gz
+img
+css
 # All themes
 #
 # Note: If you wish to whitelist themes,
