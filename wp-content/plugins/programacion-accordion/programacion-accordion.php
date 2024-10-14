@@ -171,7 +171,7 @@ function obtener_programacion_por_dia($dias)
     }
 
     // Argumentos para la consulta
-    $meta_query = array('relation' => 'OR'); // Relación 'OR' para permitir coincidencias en cualquier día
+    $meta_query = array('relation' => 'AND'); // Relación 'OR' para permitir coincidencias en cualquier día
 
     foreach ($dias as $dia) {
         $meta_query[] = array(
