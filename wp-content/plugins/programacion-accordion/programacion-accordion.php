@@ -184,6 +184,12 @@ function obtener_programacion_por_dia($dias)
     $args = array(
         'post_type' => 'programacion',
         'meta_query' => $meta_query, // Meta query para buscar coincidencias en los días
+        'meta_key' => 'hora_inicio', // Clave meta para ordenar por hora de inicio
+        'orderby' => array(
+            'meta_value_num' => 'ASC', // Ordena por hora de inicio (número)
+            'meta_value' => 'ASC', // Ordena por hora de fin si es necesario
+        ),
+        'meta_type' => 'TIME', // Indica que es un campo de tiempo (hora_inicio y hora_fin)
     );
 
     $query = new WP_Query($args);
