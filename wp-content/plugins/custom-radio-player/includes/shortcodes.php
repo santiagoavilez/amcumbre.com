@@ -60,7 +60,7 @@ function radio_player_shortcode($atts)
         }
     } else {
         // Mostrar mensaje si no hay programación actual
-        $titulo = "Escuchando CUMBRE";
+        $titulo = "Musicales CUMBRE";
         $imagen = "https://amcumbre.com/wp-content/uploads/2024/10/cumbre-logo-aguila.webp";
         $locutores = "";
     }
