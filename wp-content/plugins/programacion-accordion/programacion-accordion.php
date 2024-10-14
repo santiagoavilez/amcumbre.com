@@ -198,6 +198,22 @@ function obtener_programacion_por_dia($dias)
         $output = '<ul style=" list-style: none">';
         while ($query->have_posts()) {
             $query->the_post();
+             $dias_programacion = get_post_meta(get_the_ID(), 'dias_semana', true);
+            // $dias_programacion_array = explode(',', $dias_programacion);
+
+             if (count($dias_programacion) !== count($dias)) {
+                if (!empty($dias_programacion)) {
+                    // Comparar los días exactos
+                    sort($dias_programacion);
+                    sort($dias);
+                    if ($dias_programacion !== $dias) {
+                        continue;
+                    }
+
+                }
+
+
+             }
             $hora_inicio = get_post_meta(get_the_ID(), 'hora_inicio', true);
             $hora_fin = get_post_meta(get_the_ID(), 'hora_fin', true);
             $locutores = get_post_meta(get_the_ID(), 'locutores', true);
