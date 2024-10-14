@@ -44,6 +44,10 @@ wp-content/mu-plugins
 wp-content/plugins/*
 !wp-content/plugins/alerta-news/
 !wp-content/plugins/custom-radio-player/
+!wp-content/plugins/programacion-accordion/
+!wp-content/plugins/programacion-accordion/css/
+
+wp-content/plugins_old
 wp-content/wp-rocket-config
 wp-content/cache
 wp-content/*.php

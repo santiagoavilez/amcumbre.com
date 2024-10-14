@@ -1,0 +1,52 @@
+.programacion-accordion {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.accordion-item {
+    margin-bottom: 10px;
+}
+
+.accordion-title {
+    background-color: transparent;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+
+}
+.accordion-item.active .accordion-title {
+    background-color: #515151;
+    color: #fff !important;
+}
+
+.accordion-content {
+    display: none;
+    padding: 10px;
+    background-color: #fff;
+    transition: transform 0.3s ease;
+}
+
+.accordion-item.active .accordion-content {
+    display: block;
+}
+
+.accordion-toggle {
+    font-size: 18px;
+    display: inline-block;
+    transition: transform 0.3s ease;
+    /* Transición suave de la rotación */
+}
+
+.accordion-toggle:hover {
+    color: #EFB900;
+}
+
+.accordion-item.active .accordion-toggle {
+    transform: rotate(180deg);
+    /* Rotación de 180 grados cuando está activo */
+}
