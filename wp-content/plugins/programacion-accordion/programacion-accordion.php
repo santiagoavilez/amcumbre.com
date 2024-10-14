@@ -205,7 +205,7 @@ function obtener_programacion_por_dia($dias)
             $output .= '<li style="display: flex; align-items: flex-start; margin-bottom: 1rem;">';
 
             // Imagen a la izquierda
-            $output .= '<div style="flex-shrink: 0; margin-right: 1rem;">
+            $output .= '<div style="flex-shrink: 0; margin-right: 1rem; aspect-ratio: 1 / 1; ">
                     <img width="96" height="96" src="' . esc_url($imagen) . '" alt="Imagen del programa">
                 </div>';
 
