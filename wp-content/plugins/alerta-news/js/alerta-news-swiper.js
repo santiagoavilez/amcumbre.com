@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const desktopSwiper = new Swiper(".desktop-swiper", {
       slidesPerView: 4,
       spaceBetween: 8,
+      speed: 800,
       loop: true,
 
       navigation: {
@@ -12,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
         prevEl: "#swiper-button-prev",
       },
       autoplay: {
-        delay: 2000,
+        delay: 3000,
       },
     });
 
@@ -21,26 +22,29 @@ document.addEventListener('DOMContentLoaded', function () {
     const mobileSwiper1 = new Swiper(".mobile-swiper-1", {
       slidesPerView: 1,
       spaceBetween: 12,
+
+      speed: 800,
       loop: true,
       pagination: {
         el: ".swiper-pagination",
         clickable: true,
       },
       autoplay: {
-        delay: 2000,
+        delay: 3000,
       },
     });
     // Segundo Swiper en móviles (segundo grupo de 4 noticias)
     const mobileSwiper2 = new Swiper(".mobile-swiper-2", {
       slidesPerView: 1,
       spaceBetween: 12,
+      speed: 800,
       loop: true,
       pagination: {
         el: ".swiper-pagination",
         clickable: true,
       },
       autoplay: {
-        delay: 2000,
+        delay: 3000,
       },
     });
   }
