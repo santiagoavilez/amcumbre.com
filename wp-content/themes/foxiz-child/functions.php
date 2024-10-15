@@ -33,3 +33,4 @@ function custom_date_format() {
 add_shortcode('custom_date', 'custom_date_format');
 
 // Fin de obtén la fecha actual en el formato deseado
+

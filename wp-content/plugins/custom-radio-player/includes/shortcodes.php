@@ -1,6 +1,82 @@
 <?php
 // Shortcode para mostrar el reproductor de radio.
 
+function refrescar_programacion()
+{
+    // Incluye el código PHP de la consulta aquí
+    // Asegúrate de que esta función devuelva los datos en formato JSON
+    $hora_actual = current_time('H:i');
+    $dia_actual = strtolower(current_time('l')); // Obtiene el día actual en formato texto y lo convierte a minúsculas
+
+    // Traducción del nombre del día al español (opcional, si es necesario)
+    $dias_ingles_a_espanol = array(
+        'monday' => 'lunes',
+        'tuesday' => 'martes',
+        'wednesday' => 'miercoles',
+        'thursday' => 'jueves',
+        'friday' => 'viernes',
+        'saturday' => 'sabado',
+        'sunday' => 'domingo'
+    );
+
+    // Si el día está en inglés, lo traducimos a español
+    if (array_key_exists($dia_actual, $dias_ingles_a_espanol)) {
+        $dia_actual = $dias_ingles_a_espanol[$dia_actual];
+    }
+
+    // Argumentos para la consulta
+    $args = array(
+        'post_type' => 'programacion',
+        'meta_query' => array(
+            'relation' => 'AND',
+            array(
+                'key' => 'hora_inicio',
+                'value' => $hora_actual,
+                'compare' => '<=',
+                'type' => 'TIME'
+            ),
+            array(
+                'key' => 'hora_fin',
+                'value' => $hora_actual,
+                'compare' => '>=',
+                'type' => 'TIME'
+            ),
+            array(
+                'key' => 'dias_semana', // Buscar en los días seleccionados
+                'value' => $dia_actual, // Comparar con el día actual
+                'compare' => 'LIKE' // Usamos LIKE porque 'dias_semana' es un array serializado
+            )
+        )
+    );
+
+    // Ejecutar la consulta
+    $query = new WP_Query($args);
+
+    if ($query->have_posts()) {
+        while ($query->have_posts()) {
+            $query->the_post();
+            $titulo = get_the_title();
+            $imagen = get_the_post_thumbnail_url();
+            $locutores = get_post_meta(get_the_ID(), 'locutores', true);
+        }
+    } else {
+        // Mostrar mensaje si no hay programación actual
+        $titulo = "Musicales CUMBRE";
+        $imagen = "https://amcumbre.com/wp-content/uploads/2024/10/cumbre-logo-aguila.webp";
+        $locutores = "";
+    }
+
+    wp_send_json(array(
+        'titulo' => $titulo,
+        'imagen' => $imagen,
+        'locutores' => $locutores
+    ));
+    wp_die();
+}
+
+// Registrar las acciones AJAX
+add_action('wp_ajax_refrescar_programacion', 'refrescar_programacion');
+add_action('wp_ajax_nopriv_refrescar_programacion', 'refrescar_programacion');
 
 function radio_player_shortcode($atts)
 {
@@ -64,6 +140,15 @@ function radio_player_shortcode($atts)
         $imagen = "https://amcumbre.com/wp-content/uploads/2024/10/cumbre-logo-aguila.webp";
         $locutores = "";
     }
+    if (defined('DOING_AJAX') && DOING_AJAX) {
+        wp_send_json(array(
+            'titulo' => $titulo,
+            'imagen' => $imagen,
+            'locutores' => $locutores
+        ));
+        wp_die();
+    }
+
 
     ob_start();
 ?>
@@ -108,6 +193,41 @@ function radio_player_shortcode($atts)
 
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOMContentLoaded')
+
+            function refrescarProgramacion() {
+                console.log('refrescando programacion')
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', '<?php echo admin_url('admin-ajax.php?action=refrescar_programacion'); ?>', true);
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        let data = JSON.parse(xhr.responseText);
+                        console.log('refrescando programacion', data)
+
+                        let tituloElement = document.getElementById('programa-titulo');
+                        let imagenElement = document.getElementById('programa-imagen');
+                        let locutoresElement = document.getElementById('programa-locutores');
+                        console.log(data)
+                        if (tituloElement) {
+                            tituloElement.textContent = data.titulo;
+                        }
+                        if (imagenElement) {
+                            imagenElement.src = data.imagen;
+                        }
+                        if (locutoresElement) {
+                            locutoresElement.textContent = data.locutores;
+                        }
+                    }
+                };
+                xhr.send();
+            }
+
+            // Refrescar cada 5 minutos (300000 ms)
+            setInterval(refrescarProgramacion, 300000);
+        });
+    </script>
     <script>
         let audioElement = null;
 

@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  console.log("swiper.js cargado");
-  console.log("Ancho de la ventana: " + window.innerWidth);
+
   if (window.innerWidth > 768) {
     // Swiper para computadoras (8 noticias, mostrando 4 a la vez)
     const desktopSwiper = new Swiper(".desktop-swiper", {
