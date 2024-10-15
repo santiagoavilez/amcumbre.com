@@ -196,6 +196,7 @@ function radio_player_shortcode($atts)
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             console.log('DOMContentLoaded')
+            refrescarProgramacion()
 
             function refrescarProgramacion() {
                 console.log('refrescando programacion')
