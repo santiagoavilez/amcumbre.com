@@ -232,7 +232,7 @@ function obtener_programacion_por_dia($dias)
                 </div>';
 
             // Contenedor de texto a la derecha
-            $output .= '<div style="display: flex; flex-direction: column;">';
+            $output .= '<div style="display: flex; flex-direction: column; padding-top: 0.5rem;">';
 
             // Información actual (hora, título, locutores)
             $output .= '<p> <strong>' . esc_html($hora_inicio) . ' - ' . esc_html($hora_fin) . ':</strong> ' . get_the_title() . ' (' . esc_html($locutores) . ') </p>';
