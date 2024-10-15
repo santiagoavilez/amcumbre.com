@@ -224,7 +224,7 @@ function obtener_programacion_por_dia($dias)
             //                 <img width="96" height="96" src=" '.esc_url($imagen) .'" alt="Imagen del programa">
 
             //  <strong>' . esc_html($hora_inicio) . ' - ' . esc_html($hora_fin) . ':</strong> ' . get_the_title() . ' (' . esc_html($locutores) . ')</li>';
-            $output .= '<li style="display: flex; align-items: flex-start; margin-bottom: 1rem;">';
+            $output .= '<li style="display: flex; align-items: flex-start; margin-bottom: 0.25rem;">';
 
             // Imagen a la izquierda
             $output .= '<div style="flex-shrink: 0; margin-right: 1rem;  ">
