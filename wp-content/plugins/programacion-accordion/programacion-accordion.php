@@ -228,7 +228,7 @@ function obtener_programacion_por_dia($dias)
 
             // Imagen a la izquierda
             $output .= '<div style="flex-shrink: 0; margin-right: 1rem;  ">
-                    <img style="aspect-ratio: 1 / 1; padding: 0.5rem; border-radius: 0.5rem;" width="96" height="96" src="' . esc_url($imagen) . '" alt="Imagen del programa">
+                    <img style="aspect-ratio: 1 / 1; padding: 0.5rem; border-radius: 12px;" width="96" height="96" src="' . esc_url($imagen) . '" alt="Imagen del programa">
                 </div>';
 
             // Contenedor de texto a la derecha
