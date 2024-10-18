@@ -38,14 +38,13 @@ function fetch_alertadigital_news()
     $rss = fetch_feed('http://alertadigital.ar/feed/');
 
     if (!is_wp_error($rss)) {
-        $max_items = $rss->get_item_quantity(8);  // Obtenemos las primeras 8 noticias
+        $max_items = $rss->get_item_quantity(12);  // Obtenemos las primeras 8 noticias
         $rss_items = $rss->get_items(0, $max_items);
 
         if ($max_items > 0) {
             $output = '<div class="alerta-news-wrapper">';
             // Swiper para computadoras (muestra 4 noticias simultáneamente)
-            $output .= '<div class="swiper-button-next"></div>';
-            $output .= '<div  class="swiper-button-prev"></div>';
+
             $output .= '<div class="swiper-container desktop-swiper">';
 
             $output .= '<div class="swiper-wrapper">';
@@ -66,8 +65,6 @@ function fetch_alertadigital_news()
             }
 
             // Botones de navegación
-
-
 
             $output .= '</div>';
 

@@ -7,11 +7,6 @@ document.addEventListener('DOMContentLoaded', function () {
       spaceBetween: 8,
       speed: 800,
       loop: true,
-
-      navigation: {
-        nextEl: "#swiper-button-next",
-        prevEl: "#swiper-button-prev",
-      },
       autoplay: {
         delay: 3000,
       },
@@ -22,13 +17,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const mobileSwiper1 = new Swiper(".mobile-swiper-1", {
       slidesPerView: 1,
       spaceBetween: 12,
-
       speed: 800,
       loop: true,
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
       autoplay: {
         delay: 3000,
       },
@@ -39,10 +29,6 @@ document.addEventListener('DOMContentLoaded', function () {
       spaceBetween: 12,
       speed: 800,
       loop: true,
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
       autoplay: {
         delay: 3000,
       },
