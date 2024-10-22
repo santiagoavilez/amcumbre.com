@@ -224,9 +224,13 @@ function radio_player_shortcode($atts)
                 };
                 xhr.send();
             }
-
+            // Refrescar cada 1 segundo (1000 ms)
+            setTimeout(() => {
+                refrescarProgramacion()
+            }, 1000);
             // Refrescar cada 5 minutos (300000 ms)
             setInterval(refrescarProgramacion, 300000);
+
         });
     </script>
     <script>
