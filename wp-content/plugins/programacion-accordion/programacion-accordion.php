@@ -56,7 +56,7 @@ function programacion_accordion_shortcode()
         </div>
         <div class="accordion-item ">
             <div class="accordion-title">
-                <h3>Lunes, miercoles y viernes</h3>
+                <h3>Lunes, miércoles y viernes</h3>
                 <svg class="accordion-toggle"" xmlns=" http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" zoomAndPan="magnify" viewBox="0 0 22.5 12.75" height="17" preserveAspectRatio="xMidYMid meet" version="1.0">
                     <defs>
                         <clipPath id="9e3afb0b3a">
@@ -110,7 +110,7 @@ function programacion_accordion_shortcode()
         <div class="accordion-item">
             <div class="accordion-title">
                 <h3>Sábado</h3>
-                <svg class="accordion-toggle"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" zoomAndPan="magnify" viewBox="0 0 22.5 12.75" height="17" preserveAspectRatio="xMidYMid meet" version="1.0">
+                <svg class="accordion-toggle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" zoomAndPan="magnify" viewBox="0 0 22.5 12.75" height="17" preserveAspectRatio="xMidYMid meet" version="1.0">
                     <defs>
                         <clipPath id="9e3afb0b3a">
                             <path d="M 0.277344 0.3125 L 21.554688 0.3125 L 21.554688 11.878906 L 0.277344 11.878906 Z M 0.277344 0.3125 " clip-rule="nonzero" />
@@ -198,10 +198,10 @@ function obtener_programacion_por_dia($dias)
         $output = '<ul style=" list-style: none">';
         while ($query->have_posts()) {
             $query->the_post();
-             $dias_programacion = get_post_meta(get_the_ID(), 'dias_semana', true);
+            $dias_programacion = get_post_meta(get_the_ID(), 'dias_semana', true);
             // $dias_programacion_array = explode(',', $dias_programacion);
 
-             if (count($dias_programacion) !== count($dias)) {
+            if (count($dias_programacion) !== count($dias)) {
                 if (!empty($dias_programacion)) {
                     // Comparar los días exactos
                     sort($dias_programacion);
@@ -209,11 +209,8 @@ function obtener_programacion_por_dia($dias)
                     if ($dias_programacion !== $dias) {
                         continue;
                     }
-
                 }
-
-
-             }
+            }
             $hora_inicio = get_post_meta(get_the_ID(), 'hora_inicio', true);
             $hora_fin = get_post_meta(get_the_ID(), 'hora_fin', true);
             $locutores = get_post_meta(get_the_ID(), 'locutores', true);
