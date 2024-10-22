@@ -229,7 +229,7 @@ function radio_player_shortcode($atts)
                 refrescarProgramacion()
             }, 1000);
             // Refrescar cada 5 minutos (300000 ms)
-            setInterval(refrescarProgramacion, 300000);
+            setInterval(refrescarProgramacion, 60000);
 
         });
     </script>
